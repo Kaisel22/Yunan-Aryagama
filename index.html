@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Font Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Three.js CDN (Animasi 3D) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -56,31 +56,40 @@
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
 
+    <!-- Loading Screen (Persis Gambar) -->
+    <div id="loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505] transition-opacity duration-700">
+        <!-- Angka Persentase -->
+        <div class="flex items-baseline font-extrabold tracking-tight">
+            <span id="loader-percent" class="text-7xl md:text-8xl text-white">0</span>
+            <span class="text-4xl md:text-5xl text-blue-500 font-semibold ml-1">%</span>
+        </div>
+        
+        <!-- Progress Bar Line -->
+        <div class="w-52 md:w-72 h-[3px] bg-white/10 rounded-full mt-6 overflow-hidden">
+            <div id="loader-bar" class="h-full bg-blue-500 w-0 transition-all duration-100 ease-out"></div>
+        </div>
+        
+        <!-- Subtext -->
+        <p class="text-xs text-gray-400 mt-4 tracking-wider uppercase font-medium">Memuat assets...</p>
+    </div>
+
     <!-- Latar Belakang 3D Canvas -->
     <div id="canvas-container"></div>
 
-    <!-- Floating Capsule/Pill Navbar Persis Gambar -->
+    <!-- Floating Capsule/Pill Navbar -->
     <div class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <nav class="pointer-events-auto flex items-center gap-1 p-1.5 rounded-full glass border border-white/15 bg-black/60 backdrop-blur-xl shadow-2xl text-xs md:text-sm">
-            <!-- Nav Item: Home -->
             <a href="#beranda" id="nav-beranda" class="nav-link px-4 md:px-5 py-2 rounded-full font-semibold transition-all duration-300 bg-white/15 text-white shadow-inner">Home</a>
-            <!-- Nav Item: About -->
             <a href="#tentang" id="nav-tentang" class="nav-link px-4 md:px-5 py-2 rounded-full font-semibold text-gray-400 hover:text-white transition-all duration-300">About</a>
-            <!-- Nav Item: Portfolio -->
             <a href="#projek" id="nav-projek" class="nav-link px-4 md:px-5 py-2 rounded-full font-semibold text-gray-400 hover:text-white transition-all duration-300">Portfolio</a>
-            <!-- Nav Item: Contact -->
             <a href="#kontak" id="nav-kontak" class="nav-link px-4 md:px-5 py-2 rounded-full font-semibold text-gray-400 hover:text-white transition-all duration-300">Contact</a>
             
-            <!-- Pemisah Garis Vertikal -->
             <div class="h-4 w-[1px] bg-white/20 mx-1"></div>
             
-            <!-- Tombol Sound / Audio Toggle -->
             <button id="audio-toggle" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition text-gray-300 hover:text-white" title="Toggle Sound">
-                <!-- Icon Suara Nyala -->
                 <svg id="sound-on" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                 </svg>
-                <!-- Icon Suara Mati -->
                 <svg id="sound-off" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
@@ -129,7 +138,6 @@
     <section id="projek" class="py-20 px-6 md:px-20">
         <h2 class="text-3xl font-bold mb-10">Karya & <span class="gradient-text">Projek Spasial</span></h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Project 1 -->
             <div class="glass p-6 rounded-2xl hover:-translate-y-2 transition duration-300 cursor-pointer">
                 <div class="h-48 bg-gray-800/50 rounded-xl mb-4 border border-white/5 flex items-center justify-center">
                     <span class="text-gray-500 text-sm">Pemetaan LiDAR & Topografi</span>
@@ -138,7 +146,6 @@
                 <p class="text-gray-400 text-sm mb-4">Pengolahan point cloud LiDAR untuk pemodelan Digital Elevation Model (DEM) dan pemetaan koridor infrastruktur.</p>
                 <a href="#" class="text-blue-400 text-sm hover:underline">Detail Projek →</a>
             </div>
-            <!-- Project 2 -->
             <div class="glass p-6 rounded-2xl hover:-translate-y-2 transition duration-300 cursor-pointer">
                 <div class="h-48 bg-gray-800/50 rounded-xl mb-4 border border-white/5 flex items-center justify-center">
                     <span class="text-gray-500 text-sm">Survei Fotogrametri Drone</span>
@@ -147,7 +154,6 @@
                 <p class="text-gray-400 text-sm mb-4">Akuisisi foto udara menggunakan drone RTK, pengolahan orthomosaic, dan pemodelan 3D permukaan bumi.</p>
                 <a href="#" class="text-blue-400 text-sm hover:underline">Detail Projek →</a>
             </div>
-            <!-- Project 3 -->
             <div class="glass p-6 rounded-2xl hover:-translate-y-2 transition duration-300 cursor-pointer">
                 <div class="h-48 bg-gray-800/50 rounded-xl mb-4 border border-white/5 flex items-center justify-center">
                     <span class="text-gray-500 text-sm">Analisis WebGIS Interaktif</span>
@@ -161,7 +167,6 @@
 
     <!-- Contact & Music Section -->
     <section id="kontak" class="py-20 px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12">
-        <!-- Form Kontak -->
         <div>
             <h2 class="text-3xl font-bold mb-4">Hubungi <span class="gradient-text">Saya</span></h2>
             <p class="text-gray-400 mb-8">Punya pertanyaan atau ingin berkolaborasi terkait projek geospasial?</p>
@@ -173,7 +178,6 @@
             </form>
         </div>
 
-        <!-- Replika Playlist Spotify -->
         <div>
             <h2 class="text-3xl font-bold mb-4">A little <span class="gradient-text">music.</span></h2>
             <p class="text-gray-400 mb-8">Musik yang menemani saat mengolah data spasial dan melakukan pemetaan.</p>
@@ -218,14 +222,37 @@
         <p>© 2026 Yunan Aryagama. All rights reserved.</p>
     </footer>
 
-    <!-- Interactive Script -->
+    <!-- Interactive Scripts -->
     <script>
-        // 1. Interactive Audio Toggle Functionality
+        // 1. Loading Screen Logic
+        let progress = 0;
+        const loader = document.getElementById('loader');
+        const loaderPercent = document.getElementById('loader-percent');
+        const loaderBar = document.getElementById('loader-bar');
+
+        const loadingInterval = setInterval(() => {
+            progress += Math.floor(Math.random() * 8) + 2; // Simulasi loading acak
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(loadingInterval);
+                
+                // Hilangkan Loading Screen secara halus setelah selesai
+                setTimeout(() => {
+                    loader.classList.add('opacity-0', 'pointer-events-none');
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 700);
+                }, 400);
+            }
+            loaderPercent.innerText = progress;
+            loaderBar.style.width = progress + '%';
+        }, 60);
+
+        // 2. Audio Toggle
         const audioBtn = document.getElementById('audio-toggle');
         const soundOnIcon = document.getElementById('sound-on');
         const soundOffIcon = document.getElementById('sound-off');
         
-        // Musik santai background Lofi
         const bgAudio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3');
         bgAudio.loop = true;
         bgAudio.volume = 0.3;
@@ -240,12 +267,12 @@
                 bgAudio.play().then(() => {
                     soundOnIcon.classList.remove('hidden');
                     soundOffIcon.classList.add('hidden');
-                }).catch(e => console.log('Audio autoplay constraint'));
+                }).catch(e => console.log('Audio autoplay restriction'));
             }
             isPlaying = !isPlaying;
         });
 
-        // 2. Dynamic Scroll Pill Highlighting (Sorotan Otomatis Tombol Aktif Saat Scroll)
+        // 3. Scroll Active Pill Navigation
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
 
@@ -268,7 +295,7 @@
             });
         });
 
-        // 3. Three.js 3D Background Particle Animation
+        // 4. Three.js Background Animation
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
