@@ -24,10 +24,10 @@
         
         /* Efek Glassmorphism (Kaca Buram) */
         .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(18, 18, 20, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
         
         /* Teks Gradasi */
@@ -59,19 +59,38 @@
     <!-- Latar Belakang 3D Canvas -->
     <div id="canvas-container"></div>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 glass px-6 md:px-20 py-4 flex justify-between items-center transition-all">
-        <div class="text-xl font-bold tracking-tighter">Yunan Aryagama</div>
-        <div class="hidden md:flex gap-8 text-sm font-medium">
-            <a href="#beranda" class="hover:text-blue-400 transition">Beranda</a>
-            <a href="#tentang" class="hover:text-blue-400 transition">Tentang</a>
-            <a href="#projek" class="hover:text-blue-400 transition">Portofolio</a>
-            <a href="#kontak" class="hover:text-blue-400 transition">Kontak</a>
-        </div>
-    </nav>
+    <!-- Floating Capsule/Pill Navbar Persis Gambar -->
+    <div class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+        <nav class="pointer-events-auto flex items-center gap-1 p-1.5 rounded-full glass border border-white/15 bg-black/60 backdrop-blur-xl shadow-2xl text-xs md:text-sm">
+            <!-- Nav Item: Home -->
+            <a href="#beranda" id="nav-beranda" class="nav-link px-4 md:px-5 py-2 rounded-full font-semibold transition-all duration-300 bg-white/15 text-white shadow-inner">Home</a>
+            <!-- Nav Item: About -->
+            <a href="#tentang" id="nav-tentang" class="nav-link px-4 md:px-5 py-2 rounded-full font-semibold text-gray-400 hover:text-white transition-all duration-300">About</a>
+            <!-- Nav Item: Portfolio -->
+            <a href="#projek" id="nav-projek" class="nav-link px-4 md:px-5 py-2 rounded-full font-semibold text-gray-400 hover:text-white transition-all duration-300">Portfolio</a>
+            <!-- Nav Item: Contact -->
+            <a href="#kontak" id="nav-kontak" class="nav-link px-4 md:px-5 py-2 rounded-full font-semibold text-gray-400 hover:text-white transition-all duration-300">Contact</a>
+            
+            <!-- Pemisah Garis Vertikal -->
+            <div class="h-4 w-[1px] bg-white/20 mx-1"></div>
+            
+            <!-- Tombol Sound / Audio Toggle -->
+            <button id="audio-toggle" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition text-gray-300 hover:text-white" title="Toggle Sound">
+                <!-- Icon Suara Nyala -->
+                <svg id="sound-on" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
+                <!-- Icon Suara Mati -->
+                <svg id="sound-off" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                </svg>
+            </button>
+        </nav>
+    </div>
 
     <!-- Hero Section -->
-    <section id="beranda" class="min-h-screen flex flex-col justify-center items-start px-6 md:px-20 pt-20">
+    <section id="beranda" class="min-h-screen flex flex-col justify-center items-start px-6 md:px-20 pt-24">
         <p class="text-gray-400 mb-2 font-medium tracking-wide text-sm">Berawal dari rasa ingin tahu terhadap bumi, berkembang menjadi passion di bidang geospasial.</p>
         <h1 class="text-5xl md:text-7xl font-bold mb-4">Hi, I'm <br><span class="gradient-text">Yunan Aryagama.</span></h1>
         <p class="max-w-2xl text-gray-300 mb-8 leading-relaxed">
@@ -83,23 +102,26 @@
         </div>
     </section>
 
-    <!-- Statistik Section -->
-    <section class="py-10 px-6 md:px-20 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="glass p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
-            <h2 class="text-3xl font-bold gradient-text mb-1">GIS & UAV</h2>
-            <p class="text-sm text-gray-400">Keahlian Utama</p>
-        </div>
-        <div class="glass p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
-            <h2 class="text-3xl font-bold gradient-text mb-1">10+</h2>
-            <p class="text-sm text-gray-400">Projek Spasial</p>
-        </div>
-        <div class="glass p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
-            <h2 class="text-3xl font-bold gradient-text mb-1">Survei</h2>
-            <p class="text-sm text-gray-400">Terestris & Drone</p>
-        </div>
-        <div class="glass p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
-            <h2 class="text-3xl font-bold gradient-text mb-1">SPIG</h2>
-            <p class="text-sm text-gray-400">Universitas Pendidikan Indonesia</p>
+    <!-- About / Statistik Section -->
+    <section id="tentang" class="py-20 px-6 md:px-20">
+        <h2 class="text-3xl font-bold mb-10">Tentang <span class="gradient-text">Keahlian</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="glass p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
+                <h3 class="text-3xl font-bold gradient-text mb-1">GIS & UAV</h3>
+                <p class="text-sm text-gray-400">Keahlian Utama</p>
+            </div>
+            <div class="glass p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
+                <h3 class="text-3xl font-bold gradient-text mb-1">10+</h3>
+                <p class="text-sm text-gray-400">Projek Spasial</p>
+            </div>
+            <div class="glass p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
+                <h3 class="text-3xl font-bold gradient-text mb-1">Survei</h3>
+                <p class="text-sm text-gray-400">Terestris & Drone</p>
+            </div>
+            <div class="glass p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
+                <h3 class="text-3xl font-bold gradient-text mb-1">SPIG</h3>
+                <p class="text-sm text-gray-400">Universitas Pendidikan Indonesia</p>
+            </div>
         </div>
     </section>
 
@@ -196,8 +218,57 @@
         <p>© 2026 Yunan Aryagama. All rights reserved.</p>
     </footer>
 
-    <!-- Script Animasi 3D (Three.js) -->
+    <!-- Interactive Script -->
     <script>
+        // 1. Interactive Audio Toggle Functionality
+        const audioBtn = document.getElementById('audio-toggle');
+        const soundOnIcon = document.getElementById('sound-on');
+        const soundOffIcon = document.getElementById('sound-off');
+        
+        // Musik santai background Lofi
+        const bgAudio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3');
+        bgAudio.loop = true;
+        bgAudio.volume = 0.3;
+        let isPlaying = false;
+
+        audioBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgAudio.pause();
+                soundOnIcon.classList.add('hidden');
+                soundOffIcon.classList.remove('hidden');
+            } else {
+                bgAudio.play().then(() => {
+                    soundOnIcon.classList.remove('hidden');
+                    soundOffIcon.classList.add('hidden');
+                }).catch(e => console.log('Audio autoplay constraint'));
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // 2. Dynamic Scroll Pill Highlighting (Sorotan Otomatis Tombol Aktif Saat Scroll)
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = 'beranda';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 250)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-white/15', 'text-white', 'shadow-inner');
+                link.classList.add('text-gray-400');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-white/15', 'text-white', 'shadow-inner');
+                    link.classList.remove('text-gray-400');
+                }
+            });
+        });
+
+        // 3. Three.js 3D Background Particle Animation
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -205,7 +276,6 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-        // Membuat Partikel 3D
         const particlesGeometry = new THREE.BufferGeometry();
         const particlesCount = 800;
         const posArray = new Float32Array(particlesCount * 3);
@@ -228,7 +298,6 @@
         
         camera.position.z = 2;
 
-        // Parallax Effect Mouse Movement
         let mouseX = 0;
         let mouseY = 0;
         document.addEventListener('mousemove', (event) => {
@@ -236,7 +305,6 @@
             mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
         });
 
-        // Loop Animasi
         function animate() {
             requestAnimationFrame(animate);
             
@@ -252,7 +320,6 @@
         
         animate();
 
-        // Responsive Resizing
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
